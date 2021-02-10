@@ -15,6 +15,7 @@ export class ProductService {
   private pageCount: number = 1;
   private pageLimit: number = 1;
   public productsArray: Product[] = [];
+  public productsArraySorted:Product[] = [];
 
   getProducts(): void{
     this.http.get<Data>(environment.apiUrl+`/products?page=${this.pageCount}`, { observe:"body" }).pipe(
@@ -22,6 +23,7 @@ export class ProductService {
     )
     .subscribe( (res) => {
       this.productsArray = [...this.productsArray, ...res.data];
+      this.productsArraySorted = this.productsArray.sort( (a,b) => a.price - b.price )
     } )
   }
 
