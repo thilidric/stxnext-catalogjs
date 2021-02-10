@@ -1,1 +1,16 @@
-<p>product-container works!</p>
+<p class="h4 font-weight-bold text-center w-100 mt-5 text-danger">Small price, big fun:</p>
+<div class="row m-2 mb-5">
+    
+    <ng-template [ngIf]="this.productService.productsArray.length < 1" [ngIfElse]="loading">
+        <div class="spinner-grow mx-auto my-5" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </ng-template>
+
+    <ng-template #loading>
+        <div class="my-2 col-lg-3 col-sm-6" *ngFor="let product of this.productService.productsArraySorted | slice:0:12;">
+            <app-product [product]="product"></app-product>
+        </div>
+    </ng-template>
+       
+</div>
