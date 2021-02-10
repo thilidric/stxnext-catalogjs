@@ -8,13 +8,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { CategoryContainerComponent } from './homepage/category-container/category-container.component';
+import { ProductContainerComponent } from './homepage/product-container/product-container.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    HomepageComponent
+    HomepageComponent,
+    CategoryContainerComponent,
+    ProductContainerComponent
   ],
   imports: [
     BrowserModule,
