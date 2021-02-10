@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from 'src/app/category.service';
 
 @Component({
   selector: 'app-category-container',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryContainerComponent implements OnInit {
 
-  constructor() { }
+  constructor( public categoryService: CategoryService ) { }
 
   ngOnInit(): void {
   }
