@@ -11,6 +11,7 @@ export class CategoryContainerComponent implements OnInit {
   constructor( public categoryService: CategoryService ) { }
 
   ngOnInit(): void {
+    this.categoryService.getCategories()
   }
 
 }
