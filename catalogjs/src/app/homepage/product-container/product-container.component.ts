@@ -11,6 +11,7 @@ export class ProductContainerComponent implements OnInit {
   constructor( public productService: ProductService ) { }
 
   ngOnInit(): void {
+    this.productService.getProducts();
   }
 
 }
