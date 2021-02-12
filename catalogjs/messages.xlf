@@ -263,6 +263,30 @@
         </context-group>
         <note priority="1" from="description">Product list header</note>
       </trans-unit>
+      <trans-unit id="homeLabel" datatype="html">
+        <source>Home <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;sr-only&quot;&gt;"/>(current)<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/navbar/navbar.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description">Homepage nav label</note>
+      </trans-unit>
+      <trans-unit id="categoriesLabel" datatype="html">
+        <source>Categories</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/navbar/navbar.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="description">Categories nav label</note>
+      </trans-unit>
+      <trans-unit id="aboutLabel" datatype="html">
+        <source>About Us</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/navbar/navbar.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <note priority="1" from="description">About us nav label</note>
+      </trans-unit>
     </body>
   </file>
 </xliff>
