@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Product, Data } from './product'
-import { tap } from 'rxjs/operators';
-import { environment } from '../environments/environment'
+import { Product, Data } from './product';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,20 +15,25 @@ export class ProductService {
   private pageLimit: number = 1;
   public productsArray: Product[] = [];
   public productsArraySorted:Product[] = [];
+  public hasFetched: boolean = false;
 
   getProducts(): void{
-    this.http.get<Data>(environment.apiUrl+`/products?page=${this.pageCount}`, { observe:"body" }).pipe(
-      tap( (res) => { this._fetchNextPage(res) } )
-    )
-    .subscribe( (res) => {
-      this.productsArray = [...this.productsArray, ...res.data];
-      this.productsArraySorted = this.productsArray.sort( (a,b) => a.price - b.price )
-    } )
+    this.http.get<Data>(environment.apiUrl+`/products?page=${this.pageCount}`, { observe:"body" })
+      .subscribe( (res) => {
+        this.productsArray = [...this.productsArray, ...res.data];
+        this._fetchNextPage(res);
+      } )
   }
 
   _fetchNextPage(res: Data):void{
     this.pageLimit = res.meta.pagination.pages;
     this.pageCount++
-    if( this.pageCount <= this.pageLimit ) this.getProducts()
+    if( this.pageCount <= this.pageLimit ) this.getProducts();
+    else this._finishFetch();
+  }
+
+  _finishFetch(){
+    this.productsArraySorted = this.productsArray.slice().sort( (a,b) => a.price - b.price );
+    this.hasFetched = true;
   }
 }
