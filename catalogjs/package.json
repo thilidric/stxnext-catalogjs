@@ -4,10 +4,15 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:pl": "ng serve --configuration=pl",
+    "start:en": "ng serve --configuration=en",
     "build": "ng build",
+    "build:pl": "ng build --configuration=pl",
+    "build:en": "ng build --configuration=en",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "int:extract": "ng extract-i18n"
   },
   "private": true,
   "dependencies": {

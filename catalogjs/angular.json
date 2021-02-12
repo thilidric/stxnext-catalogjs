@@ -70,6 +70,18 @@
                   "maximumError": "4kb"
                 }
               ]
+            },
+            "pl": {
+              "aot": true,
+              "outputPath": "dist/catalogjs-pl/",
+              "i18nFile": "src/locale/messages.pl.xlf",
+              "i18nLocale": "pl",
+            },
+            "en": {
+              "aot": true,
+              "outputPath": "dist/catalogjs-en/",
+              "i18nFile": "src/locale/messages.en.xlf",
+              "i18nLocale": "en",
             }
           }
         },
@@ -84,7 +96,13 @@
             },
             "production": {
               "browserTarget": "catalogjs:build:production"
-            }
+            },
+            "pl": {
+              "browserTarget": "catalogjs:build:pl"
+            },
+            "en": {
+              "browserTarget": "catalogjs:build:en"
+            },
           }
         },
         "extract-i18n": {
