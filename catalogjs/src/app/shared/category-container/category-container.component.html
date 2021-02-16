@@ -8,8 +8,8 @@
     </ng-template>
 
     <ng-template #loading>
-        <div class="col-md-4 col-xl-2 my-3" *ngFor="let category of this.categoriesArrayShuffled | slice:0:6;">
-            <app-category [category]="category" ></app-category>
+        <div class="col-md-4 col-xl-2 my-3" *ngFor="let category of this.categoriesArrayShuffled  | slice:0:this.limit">
+            <app-category (click)="onCategorySelect(category)" [category]="category" ></app-category>
         </div>
     </ng-template>
        

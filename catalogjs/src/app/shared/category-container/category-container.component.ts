@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Category } from 'src/app/interfaces/category';
 import { CategoryService } from 'src/app/services/category.service';
 
@@ -9,18 +10,20 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class CategoryContainerComponent implements OnInit {
 
-  constructor( public categoryService: CategoryService ) { }
+  constructor( public categoryService: CategoryService, private router: Router ) { }
+  
+  @Input() limit!: number;
 
   public categoriesArrayShuffled: Category[] = [];
   public hasFetched = false;
 
   ngOnInit(): void {
     this.categoryService.getCategories()
-      .subscribe( (res) => {
-        this.categoriesArrayShuffled = res.slice();
-        this.shuffleArray(this.categoriesArrayShuffled);
-        this.hasFetched = true;
-      })
+    .subscribe( (res) => {
+      this.categoriesArrayShuffled = res.slice();
+      this.shuffleArray(this.categoriesArrayShuffled);
+      this.hasFetched = true;
+    })
   }
 
   shuffleArray(array: Category[]) :void{
@@ -28,6 +31,10 @@ export class CategoryContainerComponent implements OnInit {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
+  }
+
+  onCategorySelect(category: Category): void {
+    this.router.navigate(['/category', category.id])
   }
 
 }
