@@ -8,7 +8,7 @@
     </ng-template>
 
     <ng-template #loading>
-        <div class="my-2 col-lg-3 col-sm-6" *ngFor="let product of this.productsArraySorted | slice:0:12;">
+        <div class="my-2 col-lg-3 col-sm-6" *ngFor="let product of this.productsArraySorted | slice:0:this.limit | categoryPipe:this.categoryID">
             <app-product [product]="product"></app-product>
         </div>
     </ng-template>

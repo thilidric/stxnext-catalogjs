@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -8,6 +8,9 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product-container.component.sass']
 })
 export class ProductContainerComponent implements OnInit {
+
+  @Input() limit!: number;
+  @Input() categoryID!: number;
 
   constructor( public productService: ProductService ) { }
 
