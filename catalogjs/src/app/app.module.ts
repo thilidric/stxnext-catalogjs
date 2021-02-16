@@ -12,6 +12,8 @@ import { CategoryContainerComponent } from './shared/category-container/category
 import { ProductContainerComponent } from './shared/product-container/product-container.component';
 import { ProductComponent } from './shared/product-container/product/product.component';
 import { CategoryComponent } from './shared/category-container/category/category.component';
+import { CategorySingleComponent } from './pages/category-single/category-single.component';
+import { CategoryPipePipe } from './pipes/category-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { CategoryComponent } from './shared/category-container/category/category
     CategoryContainerComponent,
     ProductContainerComponent,
     ProductComponent,
-    CategoryComponent
+    CategoryComponent,
+    CategorySingleComponent,
+    CategoryPipePipe
   ],
   imports: [
     BrowserModule,
