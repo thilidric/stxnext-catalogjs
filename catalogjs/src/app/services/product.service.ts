@@ -9,12 +9,16 @@ import { ApiService } from './api.service';
 
 export class ProductService {
 
+  private productData: Observable<Product[]>
+
   constructor(
     private apiService: ApiService 
-  ) { }
+  ) { 
+    this.productData = this.apiService.getAllPages("/products")
+  }
 
   getProducts(): Observable<Product[]> {
-    return this.apiService.getAllPages("/products")
+    return this.productData
   }
 
 }

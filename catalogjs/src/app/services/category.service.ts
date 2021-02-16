@@ -9,12 +9,16 @@ import { Observable } from 'rxjs';
 
 export class CategoryService {
 
+  private categoryData: Observable<Category[]>
+
   constructor( 
     private apiService: ApiService 
-  ) { }
+  ) { 
+    this.categoryData = this.apiService.getAllPages("/categories")
+  }
 
   getCategories(): Observable<Category[]> {
-    return this.apiService.getAllPages("/categories")
+    return this.categoryData;
   }
 
 }
