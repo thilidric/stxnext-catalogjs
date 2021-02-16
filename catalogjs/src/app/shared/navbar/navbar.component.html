@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-            <a class="nav-link" href="#" i18n="Homepage nav label@@homeLabel">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#" (click)="onHomeSelect()" i18n="Homepage nav label@@homeLabel">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#" i18n="Categories nav label@@categoriesLabel">Categories</a>
