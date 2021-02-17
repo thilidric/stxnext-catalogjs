@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -10,8 +11,15 @@ export class ProductContainerComponent implements OnInit {
 
   constructor( public productService: ProductService ) { }
 
+  public productsArraySorted: Product[] = [];
+  public hasFetched = false;
+  
   ngOnInit(): void {
-    this.productService.getProducts();
+    this.productService.getProducts()
+      .subscribe( (res) => {
+        this.productsArraySorted = res.slice().sort( (a,b) => a.price-b.price );
+        this.hasFetched = true;
+      })
   }
 
 }

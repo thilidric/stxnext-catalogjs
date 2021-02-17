@@ -1,14 +1,14 @@
 <p class="h1 text-center w-100 my-4" i18n="Category list header@@categoriesHeader" >Browse our categories!</p>
 <div class="row m-2">
     
-    <ng-template [ngIf]="!this.categoryService.hasFetched" [ngIfElse]="loading">
+    <ng-template [ngIf]="!this.hasFetched" [ngIfElse]="loading">
         <div class="spinner-grow mx-auto my-5" role="status">
             <span class="sr-only">Loading...</span>
         </div>
     </ng-template>
 
     <ng-template #loading>
-        <div class="col-md-4 col-xl-2 my-3" *ngFor="let category of this.categoryService.categoriesArrayShuffled | slice:0:6;">
+        <div class="col-md-4 col-xl-2 my-3" *ngFor="let category of this.categoriesArrayShuffled | slice:0:6;">
             <app-category [category]="category" ></app-category>
         </div>
     </ng-template>
