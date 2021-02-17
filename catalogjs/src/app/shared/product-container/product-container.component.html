@@ -1,4 +1,4 @@
-<p class="h4 font-weight-bold text-center w-100 mt-5 text-danger" i18n="Product list header@@productsHeader" >Small price, big fun:</p>
+<p class="h4 font-weight-bold text-center w-100 mt-5 mb-4 text-danger" i18n="Product list header@@productsHeader" >{{this.categoryName ? this.categoryName : "Small price, big fun:"}}</p>
 <div class="row m-2 mb-5">
     
     <ng-template [ngIf]="!this.hasFetched" [ngIfElse]="loading">
@@ -8,8 +8,17 @@
     </ng-template>
 
     <ng-template #loading>
-        <div class="my-2 col-lg-3 col-sm-6" *ngFor="let product of this.productsArraySorted | slice:0:this.limit | categoryPipe:this.categoryID">
-            <app-product [product]="product"></app-product>
+        <div class="row w-100">
+            <div class="my-2 col-lg-3 col-sm-6" *ngFor="let product of this.productsArraySorted | slice:(page-1) * pageSize : page * pageSize">
+                <app-product [product]="product"></app-product>
+            </div>
+        </div>
+        <div class="row mx-auto text-dark mt-4" [ngClass]="{'d-none': !this.categoryID}">
+            <ngb-pagination
+            [(page)]="this.page"
+            [pageSize]="this.limit"
+            [collectionSize]="this.productsArraySorted.length"
+            (pageChange)="this.onPagination($event)"></ngb-pagination>
         </div>
     </ng-template>
        
