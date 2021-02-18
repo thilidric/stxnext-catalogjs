@@ -1,0 +1,51 @@
+<div class="container-fluid">
+
+    <ng-template [ngIf]="!this.hasFetched" [ngIfElse]="loading">
+        <div class="row">
+            <div class="spinner-grow mx-auto my-5" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #loading>
+        <div class="row">
+            <div class="col-md-8 mx-md-auto card m-5 bg-light">
+                <p class="text-center h3 m-4 w-100">{{this.product.name}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 mx-md-auto card mb-5 border-0">
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col mx-md-auto">
+                                <img class="w-100 rounded" src="{{product.image}}" alt="Card image cap">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col mr-md-auto">
+                                <div class="card mb-4 p-4 bg-dark text-white font-weight-bold text-center d-block">
+                                    <span class="d-block">Attached Categories:</span>
+                                    <span class="" *ngFor="let category of this.product.categories" >{{category.name}}</span>
+                                </div>
+                                <p class="p-2">{{this.product.description}}</p>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="text-success text-center h2">$ {{this.product.price}}</p>
+                                    </div>
+                                    <div class="col">
+                                        <button class="btn btn-danger w-100 btn-md">Kup teraz</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+</div>
+  

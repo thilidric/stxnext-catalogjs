@@ -17,4 +17,8 @@ export class ProductService {
     return this.apiService.getAllPages("/products")
   }
 
+  getProduct( id:number ): Observable<Product> {
+    return this.apiService.get( "/products/" + id )
+  }
+
 }
