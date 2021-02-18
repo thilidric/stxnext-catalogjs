@@ -3,7 +3,7 @@ import { environment } from '../../environments/environment';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { EMPTY, Observable ,  throwError } from 'rxjs';
 
-import { catchError, expand, reduce, share, tap } from 'rxjs/operators';
+import { catchError, expand, reduce, share, shareReplay, tap } from 'rxjs/operators';
 import { Data } from '../interfaces/category';
 
 @Injectable({
@@ -51,6 +51,7 @@ export class ApiService {
       expand( (res: Data) => pageCount <= res.meta.pagination.pages ? this.http.get<Data>(url+"?page="+ pageCount ) : EMPTY),
       tap( () => pageCount++ ),
       reduce( (acc, res: any) => acc.concat(res.data), [] ),
+      shareReplay()
     )
   }
 }
